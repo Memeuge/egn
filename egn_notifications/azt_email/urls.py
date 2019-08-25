@@ -2,8 +2,8 @@
 from django.urls import path
 from django.conf.urls import url
 
-from .views import WhastappView
+from .views import EmailView
 
 urlpatterns = [    
-    url(r'^notif/', WhastappView.as_view()),        
+    url(r'^notif/', EmailView.as_view()),        
     ]

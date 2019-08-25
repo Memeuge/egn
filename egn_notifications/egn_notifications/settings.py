@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'azt_email',
-    'azt_whatsapp'
+    'azt_whatsapp',
+    'azt_sms'
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ USERNAME_EMAIL= os.environ.get('USERNAME_EMAIL', 'karazu20@gmail.com')
 FROM_ADDR = os.environ.get('FROM_ADDR', 'karazu20@gmail.com')
 EMAIL_PASS = os.environ.get('EMAIL_PASS', 'cbi%1985')
 MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com:587' )
-
+TOKEN_SMS = os.environ.get('TOKEN_SMS','SMS eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2FwaWtleSI6IjYyYjk2NTFjYWJmMTI4ZTA0ZWI1ODhkYmY1YzllYzg5NmJmYTc1NmIiLCJ1c2VyX2VtYWlsIjoib2RyYXVkZWs5OUBnbWFpbC5jb20iLCJ1c2VyX2lkIjozMjg1MiwiaWF0IjoxNTY2NjkzMTQ4fQ.QmAlECu6Gxi3_rM3buVDvihptCk4gMIhS4hZsue1-X4')
 
 
 

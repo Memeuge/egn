@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^whatsapp/', include('azt_whatsapp.urls'))
+    url(r'^email/', include('azt_email.urls'))
+    url(r'^sms/', include('azt_sms.urls'))
 ]

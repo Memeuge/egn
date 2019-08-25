@@ -28,7 +28,7 @@ class EmailView(APIView):
 
 
     
-    def send_mail (email, ref, monto):  
+    def send_mail (email, msg):  
         themsg = MIMEMultipart()
         themsg['Subject'] = 'Resultados de Riesgos financieros'
         themsg['To'] = email #", ".join(to_addr)
@@ -39,11 +39,11 @@ class EmailView(APIView):
                 <body>
                     
                     <br>
-                    <h3>Recibo Electronico Banco Azteca: %s</h3>
+                    <h3>Recibo Electronico Banco Azteca: </h3>
                     <br>
                     <p>
                     
-                        Monto: %s
+                        Detalle: %s
                     </p>
                     
                     <p>
@@ -52,7 +52,7 @@ class EmailView(APIView):
                     
                 </body>
             </html>
-        ''' % (ref , monto)
+        ''' % (msg)
 
         part1 = MIMEText(html, 'html', 'utf-8')
         themsg.attach(part1)    
@@ -70,9 +70,9 @@ class EmailView(APIView):
         try:                        
             data_byte = base64.b64decode(request.data['message']['data'])
             data = eval(data_byte.decode("utf-8"))
-            serializer = WhatsappSerializer(data=data) 
+            serializer = EmailSerializer(data=data) 
             if serializer.is_valid():
-                self.send_mail (email, serializer.data['monto'])
+                self.send_mail (serializer.data['email'], serializer.data['msg'])
                 return Response({},status=status.HTTP_200_OK)
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
         except Exception as err:            
