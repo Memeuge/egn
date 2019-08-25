@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'notifications'
 ]
 
 MIDDLEWARE = [
@@ -117,4 +119,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
+
+
+
+PROJECT_ID_QUEUE= os.environ.get('PROJECT_ID_QUEUE', "gcp-training-egc")
+TOPIC_NAME_QUEUE_WHATSAPP = os.environ.get('TOPIC_NAME_QUEUE_WHATSAPP', "subs_msg_whatsapp")
+TOPIC_NAME_QUEUE_EMAIL = os.environ.get('TOPIC_NAME_QUEUE_EMAIL', "subs_msg_email")
+GOOGLE_APPLICATION_CREDENTIALS = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', "gcp-training-egc-108492b7ab38.json")

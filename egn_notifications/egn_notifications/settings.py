@@ -124,5 +124,15 @@ STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 #Envoirement vars       
-ACCOUNT_SID_WHATSAPP = os.environ.get('ACCOUNT_SID_WHATSAPP')
-AUTH_TOKEN_WHATSAPP = os.environ.get('AUTH_TOKEN_WHATSAPP')
+ACCOUNT_SID_WHATSAPP = os.environ.get('ACCOUNT_SID_WHATSAPP', 'AC81cac674583d7fc739fe84d8bfe3dbc1')
+AUTH_TOKEN_WHATSAPP = os.environ.get('AUTH_TOKEN_WHATSAPP', '31cd4c75efd4722a69f23d87e10bc913' )
+
+USERNAME_EMAIL= os.environ.get('USERNAME_EMAIL', 'karazu20@gmail.com')
+FROM_ADDR = os.environ.get('FROM_ADDR', 'karazu20@gmail.com')
+EMAIL_PASS = os.environ.get('EMAIL_PASS', 'cbi%1985')
+MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com:587' )
+
+
+
+
+
