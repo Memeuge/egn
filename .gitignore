@@ -1,0 +1,4 @@
+*.pyc
+.venv/
+egn_notifications/static/
+egn_api/static/
