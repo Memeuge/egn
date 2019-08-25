@@ -4,7 +4,7 @@
 
 ##Elastic Green Notificatios
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/Memeuge/egn/blob/master/readme/Diagrama.png)
 
 
 # SERVICIO API NOTIFICATIONS
