@@ -29,7 +29,7 @@ class NotificationsView(APIView):
             return Response({}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-    def enqueue_data (self, data, type_msg):
+    def enqueue_data (self, phone, email, msg, type_msg):
         project_id = settings.PROJECT_ID_QUEUE
         #message = "Mensaje...."
         
@@ -37,20 +37,29 @@ class NotificationsView(APIView):
             topic_name = settings.TOPIC_NAME_QUEUE_WHATSAPP
         if  "EMAIL" in type_msg :
             topic_name = settings.TOPIC_NAME_QUEUE_EMAIL
+        if  "SMS" in type_msg :
+            topic_name = settings.TOPIC_NAME_QUEUE_EMAIL
 
         publisher = pubsub_v1.PublisherClient()
         # The `topic_path` method creates a fully qualified identifier
         # in the form `projects/{project_id}/topics/{topic_name}`
         topic_path = publisher.topic_path(project_id, topic_name)
 
-        for n in range(1, 2):
+
+        #for n in range(1, 2):
             #data = message + u'Message number {}'.format(n)
-            # Data must be a bytestring
-            data = str (data).encode()
-            print (data)
-            # When you publish a message, the client returns a future.
-            future = publisher.publish(topic_path, data=data)
-            print(future.result())
+
+        data = {
+                'phone': phone,
+                'email':email,
+                'msg': msg
+                }
+        data = str (data).encode()
+        print (data)
+        
+        # When you publish a message, the client returns a future.
+        future = publisher.publish(topic_path, data=data)
+        print(future.result())
 
         print('Published messages.')
 
@@ -59,7 +68,7 @@ class NotificationsView(APIView):
         try:                                    
             serializer = NotificationsSerializer(data=request.data) 
             if serializer.is_valid():
-                self.enqueue_data (serializer.data, serializer.data['type_notif'] )
+                self.enqueue_data (serializer.data['phone'], serializer.data['email'], serializer.data['msg'], serializer.data['type_notif'] )
                 return Response({},status=status.HTTP_200_OK)
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
         except Exception as err:            

@@ -127,4 +127,6 @@ STATIC_URL = '/static/'
 PROJECT_ID_QUEUE= os.environ.get('PROJECT_ID_QUEUE', "gcp-training-egc")
 TOPIC_NAME_QUEUE_WHATSAPP = os.environ.get('TOPIC_NAME_QUEUE_WHATSAPP', "subs_msg_whatsapp")
 TOPIC_NAME_QUEUE_EMAIL = os.environ.get('TOPIC_NAME_QUEUE_EMAIL', "subs_msg_email")
+TOPIC_NAME_QUEUE_SMS = os.environ.get('TOPIC_NAME_QUEUE_SMS', "subs_msg_sms")
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', "gcp-training-egc-108492b7ab38.json")
+

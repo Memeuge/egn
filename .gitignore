@@ -2,3 +2,5 @@
 .venv/
 egn_notifications/static/
 egn_api/static/
+egn_api/gcp/gcp-training-egc-108492b7ab38.json
+
